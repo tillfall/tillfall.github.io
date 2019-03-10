@@ -39,6 +39,9 @@
 					var workWaypoint = new Microsoft.Maps.Directions.Waypoint({ address: 'Work', location: new Microsoft.Maps.Location(51.50632, -0.12714) });
 					directionsManager.addWaypoint(workWaypoint);
 
+					var homeWaypoint = new Microsoft.Maps.Directions.Waypoint({ address: 'Home', location: new Microsoft.Maps.Location(51.50132, -0.12714) });
+					directionsManager.addWaypoint(homeWaypoint);
+
 					//Specify the element in which the itinerary will be rendered.
 					directionsManager.setRenderOptions({ itineraryContainer: '#directionsItinerary' });
 
