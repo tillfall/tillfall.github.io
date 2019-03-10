@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>createpolylinesHTML</title>
+        <title>MYMAP</title>
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
         <style type='text/css'>body{margin:0;padding:0;overflow:hidden;font-family:'Segoe UI',Helvetica,Arial,Sans-Serif}</style>
     </head>
@@ -10,9 +10,11 @@
         
         <div id='myMap' style='width: 100vw; height: 100vh;'></div>
         <script type='text/javascript'>
+			
             function loadMapScenario() {
 				// var boundingBox = Microsoft.Maps.LocationRect.fromLocations(new Microsoft.Maps.Location(47.618594, -122.347618), new Microsoft.Maps.Location(47.620700, -122.347584), new Microsoft.Maps.Location(47.622052, -122.345869)); 
-                var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {credentials: 'AuZLq8HldSf5SSAejGTpuD2WXwu90DrdU2CiQeNu8TG8e9VFZn65cGtEwdFaqU7Q',
+                var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
+				// credentials: 'AuZLq8HldSf5SSAejGTpuD2WXwu90DrdU2CiQeNu8TG8e9VFZn65cGtEwdFaqU7Q',
 				// navigationBarMode: navigationBarMode.compact,
 				mapTypeId: Microsoft.Maps.MapTypeId.canvasLight,
 				center: new Microsoft.Maps.Location(51.50632, -0.12714),});
@@ -22,25 +24,37 @@
 				map.entities.clear(); 
 				var pushpin= new Microsoft.Maps.Pushpin(
 						new Microsoft.Maps.Location(51.50632, -0.32020), //	map.getCenter(), 
-						{ text: 'A', title: 'Title', subTitle: 'Subtitle' }); 
+						{ text: 'A', title: '标题', subTitle: '子标题' }); 
 				map.entities.push(pushpin);
 				pushpin.setOptions({ enableHoverStyle: true, enableClickedStyle: true });
+				
+				Microsoft.Maps.loadModule('Microsoft.Maps.Directions', function () {
+					//Create an instance of the directions manager.
+					directionsManager = new Microsoft.Maps.Directions.DirectionsManager(map);
 
-				var start= 'Seattle, wa'; var end= 'Portland, OR'; 
-				map.getCredentials(function(credentials) {
-					var routeRequest = 'https://dev.virtualearth.net/REST/v1/Routes?wp.0=' + start + '&wp.1=' + end + '&routePathOutput=Points&output=json&jsonp=RouteCallback&key=' + credentials;
-					var mapscript = document.createElement('script'); 
-					mapscript.type = 'text/javascript'; 
-					mapscript.src = routeRequest; 
-					document.getElementById('myMap').appendChild(mapscript); 
+					//Create waypoints to route between.
+					var seattleWaypoint = new Microsoft.Maps.Directions.Waypoint({ address: 'Seattle, WA', location: new Microsoft.Maps.Location(51.50632, -0.32020) });
+					directionsManager.addWaypoint(seattleWaypoint);
+
+					var workWaypoint = new Microsoft.Maps.Directions.Waypoint({ address: 'Work', location: new Microsoft.Maps.Location(51.50632, -0.12714) });
+					directionsManager.addWaypoint(workWaypoint);
+
+					//Specify the element in which the itinerary will be rendered.
+					directionsManager.setRenderOptions({ itineraryContainer: '#directionsItinerary' });
+
+					//Calculate directions.
+					directionsManager.calculateDirections();
 				});
+
             }
 			
         </script>
-        <script type='text/javascript' src='https://cn.bing.com/api/maps/mapcontrol?key=YourBingMapsKey&callback=loadMapScenario' async defer></script>
+        <script type='text/javascript' src='https://cn.bing.com/api/maps/mapcontrol?key=AuZLq8HldSf5SSAejGTpuD2WXwu90DrdU2CiQeNu8TG8e9VFZn65cGtEwdFaqU7Q&callback=loadMapScenario' async defer></script>
     </body>
 </html>
 
 <!--
 https://www.cnblogs.com/aiyunyun/p/6292567.html
+route:
+https://docs.microsoft.com/en-us/bingmaps/v8-web-control/map-control-concepts/directions-module-examples/calculate-driving-directions
 -->
