@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>createpolylinesHTML</title>
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+        <style type='text/css'>body{margin:0;padding:0;overflow:hidden;font-family:'Segoe UI',Helvetica,Arial,Sans-Serif}</style>
+    </head>
+    <body>
+        <div id='printoutPanel'></div>
+        
+        <div id='myMap' style='width: 100vw; height: 100vh;'></div>
+        <script type='text/javascript'>
+            function loadMapScenario() {
+				// var boundingBox = Microsoft.Maps.LocationRect.fromLocations(new Microsoft.Maps.Location(47.618594, -122.347618), new Microsoft.Maps.Location(47.620700, -122.347584), new Microsoft.Maps.Location(47.622052, -122.345869)); 
+                var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {credentials: 'AuZLq8HldSf5SSAejGTpuD2WXwu90DrdU2CiQeNu8TG8e9VFZn65cGtEwdFaqU7Q',
+				// navigationBarMode: navigationBarMode.compact,
+				mapTypeId: Microsoft.Maps.MapTypeId.canvasLight,
+				center: new Microsoft.Maps.Location(51.50632, -0.12714),});
+                // Add 5 random Polylines within current map view
+                // map.entities.push(Microsoft.Maps.TestDataGenerator.getPolylines(5, map.getBounds()));  
+
+				map.entities.clear(); 
+				var pushpin= new Microsoft.Maps.Pushpin(
+						new Microsoft.Maps.Location(51.50632, -0.32020), //	map.getCenter(), 
+						{ text: 'A', title: 'Title', subTitle: 'Subtitle' }); 
+				map.entities.push(pushpin);
+				pushpin.setOptions({ enableHoverStyle: true, enableClickedStyle: true });
+
+				var start= 'Seattle, wa'; var end= 'Portland, OR'; 
+				map.getCredentials(function(credentials) {
+					var routeRequest = 'https://dev.virtualearth.net/REST/v1/Routes?wp.0=' + start + '&wp.1=' + end + '&routePathOutput=Points&output=json&jsonp=RouteCallback&key=' + credentials;
+					var mapscript = document.createElement('script'); 
+					mapscript.type = 'text/javascript'; 
+					mapscript.src = routeRequest; 
+					document.getElementById('myMap').appendChild(mapscript); 
+				});
+            }
+			
+        </script>
+        <script type='text/javascript' src='https://cn.bing.com/api/maps/mapcontrol?key=YourBingMapsKey&callback=loadMapScenario' async defer></script>
+    </body>
+</html>
+
+<!--
+https://www.cnblogs.com/aiyunyun/p/6292567.html
+-->
