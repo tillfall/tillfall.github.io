@@ -1,40 +1,28 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
-    <title>海量点</title>
+    <title>Map</title>
     <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"/>
     <style>
         html, body, #container {
             height: 100%;
             width: 100%;
         }
-
-        .input-card .btn {
-            margin-right: 1.2rem;
-            width: 9rem;
-        }
-
-        .input-card .btn:last-child {
-            margin-right: 0;
-        }
     </style>
 </head>
 <body>
 <div id="container" class="map" tabindex="0"></div>
-<div class="input-card">
-    <h4>海量点效果切换</h4>
-    <div class="input-item">
-        <input type="button" class="btn" value="单一图标" onclick='setStyle(0)'/>
-        <input type="button" class="btn" value="多个图标" onclick='setStyle(1)'/>
-    </div>
-</div>
 <script type="text/javascript"
         src="https://webapi.amap.com/maps?v=1.4.15&key=2c6ea6a9274422bdb48a21bb38370e54"></script>
 <script type="text/javascript">
-    var citys = [{"lnglat":[116.258446,37.686622],"name":"景县","style":0},{"lnglat":[113.559954,22.124049],"name":"圣方济各堂区","style":0},{"lnglat":[116.366794,39.915309],"name":"西城区","style":0},{"lnglat":[116.486409,39.921489],"name":"朝阳区","style":0},{"lnglat":[116.286968,39.863642],"name":"丰台区","style":2},{"lnglat":[116.195445,39.914601],"name":"石景山区","style":0}]
+    var citys = [{"lnglat":[116.258446,37.686622],"name":"景县","style":0},
+    {"lnglat":[113.559954,22.124049],"name":"圣方济各堂区","style":1},
+    {"lnglat":[116.366794,39.915309],"name":"西城区","style":0},
+    {"lnglat":[116.486409,39.921489],"name":"朝阳区","style":0},
+    {"lnglat":[116.286968,39.863642],"name":"丰台区","style":2},
+    {"lnglat":[116.195445,39.914601],"name":"石景山区","style":0}]
     
     var map = new AMap.Map('container', {
         zoom: 4,
@@ -47,12 +35,12 @@
         size: new AMap.Size(18, 18)
     }, {
         url: 'https://a.amap.com/jsapi_demos/static/images/mass1.png',
-        anchor: new AMap.Pixel(4, 4),
-        size: new AMap.Size(7, 7)
+        anchor: new AMap.Pixel(6, 6),
+        size: new AMap.Size(18, 18)
     }, {
         url: 'https://a.amap.com/jsapi_demos/static/images/mass2.png',
-        anchor: new AMap.Pixel(3, 3),
-        size: new AMap.Size(5, 5)
+        anchor: new AMap.Pixel(6, 6),
+        size: new AMap.Size(18, 18)
     }
     ];
 
@@ -72,14 +60,6 @@
     });
 
     mass.setMap(map);
-
-    function setStyle(multiIcon) {
-        if (multiIcon) {
-            mass.setStyle(style);
-        } else {
-            mass.setStyle(style[2]);
-        }
-    }
 </script>
 </body>
 </html>
