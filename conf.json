@@ -1,6 +1,8 @@
 {"基金": {"大盘历史":"http://quotes.money.163.com/service/chddata.html?code=0000001&start=%s&fields=TCLOSE",
    "大盘净值":"http://hq.sinajs.cn/list=s_%s",
    "基金实时":"http://fundgz.1234567.com.cn/js/%s.js",
+   "基金日K线":"http://image.sinajs.cn/newchart/daily/n/%s.gif",
+   "基金实时曲线":"http://image.sinajs.cn/newchart/min/n/%s.gif",
    "基金历史":"http://data.funds.hexun.com/outxml/detail/openfundnetvalue.aspx?fundcode=%s&startdate=%s&enddate=%s",
    "基金净值":"http://hq.sinajs.cn/list=f_%s",
    "基金购买记录":{
