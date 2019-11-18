@@ -2,6 +2,6 @@
    "大盘净值":"http://hq.sinajs.cn/list=s_%s",
    "基金实时":"http://fundgz.1234567.com.cn/js/%s.js",
    "基金历史":"http://data.funds.hexun.com/outxml/detail/openfundnetvalue.aspx?fundcode=%s&startdate=%s&enddate=%s",
-   "基金净值":"http://hq.sinajs.cn/list=f_%s",}, 
- "携程机票":"https://flights.ctrip.com/domestic/ajax/Get90DaysLowestPrice?dcity=%s&acity=%s",
+   "基金净值":"http://hq.sinajs.cn/list=f_%s"}, 
+ "携程机票":"https://flights.ctrip.com/domestic/ajax/Get90DaysLowestPrice?dcity=%s&acity=%s"
 }
