@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <style>
+    html,
+    body,
+    #container {
+      width: 100%;
+      height: 100%;
+    }
+    </style>
+    <title>QP-map</title>
+    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+    <script src="https://webapi.amap.com/maps?v=1.4.15&key=2c6ea6a9274422bdb48a21bb38370e54&plugin=AMap.PolyEditor"></script>
+</head>
+<body>
+<div id="container"></div>
+<script type="text/javascript">
+    var map = new AMap.Map("container", {
+        center: [121.1, 31.1],
+        zoom: 2
+    });
+
+    var p_ylhy = new AMap.Marker({position: [121.090526,31.170918]});  //玉兰花园
+    var p_hw = new AMap.Marker({position: [120.965897,31.06518]});  //华为基地
+
+    var p_wdm = new AMap.Marker({position: [121.082801,31.133402]});  //万达茂
+    var p_wygc = new AMap.Marker({position: [121.096132,31.14505]});  //吾悦广场
+    var p_otls = new AMap.Marker({position: [121.22889,31.156509]});  //奥特莱斯
+    var p_hzzx = new AMap.Marker({position: [121.298372,31.193006]});  //国家会展中心
+    var p_bwg = new AMap.Marker({position: [121.13496,31.151922]});  //博物馆
+    var p_blgc = new AMap.Marker({position: [121.153687,31.161311]});  //宝龙广场
+
+    var p_dflz = new AMap.Marker({position: [121.011218,31.104506]});  //东方绿舟
+    var p_zjj = new AMap.Marker({position: [121.053967,31.109563]});  //朱家角
+    var p_zwy = new AMap.Marker({position: [121.182433,31.076079]});  //辰山植物园
+    var p_ss = new AMap.Marker({position: [121.197024,31.094896]});  //佘山
+    var p_hlg = new AMap.Marker({position: [121.214706,31.096513]});  //欢乐谷
+    var p_tyd = new AMap.Marker({position: [121.0736,31.036815]});  //太阳岛
+    var p_qlgs = new AMap.Marker({position: [121.174365,31.240017]});  //青龙古寺
+    var p_qxjygy = new AMap.Marker({position: [121.003733,31.061401]});  //青西郊野公园
+    var p_dshdd = new AMap.Marker({position: [121.082139,31.134419]});  //淀山湖大道
+    var p_qsy = new AMap.Marker({position: [121.114073,31.149005]});  //曲水园
+    var p_chq = new AMap.Marker({position: [121.024306,31.138072]});  //彩虹桥
+    var p_dgy = new AMap.Marker({position: [120.909868,31.07354]});  //大观园
+    var p_gfl = new AMap.Marker({position: [121.196269,31.062675]});  //广富林
+
+    var p_lsfd = new AMap.Marker({position: [121.060108,31.128355]});  //兰生复旦
+    
+    map.add([p_dflz, p_ylhy, p_wdm, p_wygc, p_zjj, p_otls, p_lsfd, p_zwy, p_ss, p_hlg, p_tyd, p_qlgs, p_qxjygy,
+        p_dshdd, p_hzzx, p_qsy, p_chq, p_bwg, p_dgy, p_gfl, p_blgc, p_hw]);
+
+    var path = [
+        [120.95, 31.22],
+        [120.95, 31.06],
+        [121.29, 31.06],
+        [121.29, 31.22],
+        [120.95, 31.22]
+    ];
+    
+    var polyline = new AMap.Polyline({
+        path: path,
+        strokeColor: "#3366FF", 
+        strokeOpacity: 1,
+        strokeWeight: 3,
+        strokeStyle: "dashed",
+        strokeDasharray: [3, 10],
+        lineJoin: 'round',
+        lineCap: 'round',
+    })
+
+    polyline.setMap(map)
+    // 缩放地图到合适的视野级别
+    map.setFitView([ polyline ])
+    
+</script>
+<a href="https://lbs.amap.com/console/show/picker">Get Point</a>
+</body>
+</html>
